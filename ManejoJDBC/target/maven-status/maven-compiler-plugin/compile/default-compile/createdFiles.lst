@@ -1,0 +1,7 @@
+datos/Conexion.class
+test/ManejoPersonas.class
+domain/Usuario.class
+datos/PersonaJDBC.class
+domain/Persona.class
+test/ManejoUsuarios.class
+datos/UsuarioJDBC.class
