@@ -1,27 +1,49 @@
 package test;
 
+import datos.Conexion;
+import datos.UsuarioJDBC;
 import datos.UsuarioJDBC;
 import domain.Usuario;
+import domain.Usuario;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ManejoUsuarios {
+
     public static void main(String[] args) {
-        UsuarioJDBC usuarioJdbc = new UsuarioJDBC();
-        
-        //Ejecutando el listado de usuarios
-        List<Usuario> usuarios = usuarioJdbc.select();
-        for(Usuario usuario: usuarios){
-            System.out.println("Usuario:" + usuario);
+
+        Connection conexion = null;
+        try {
+            conexion = Conexion.getConnection();
+            if (conexion.getAutoCommit()) {
+                conexion.setAutoCommit(false);
+            }
+
+            UsuarioJDBC usuarioJdbc = new UsuarioJDBC(conexion);
+
+            Usuario cambioUsuario = new Usuario();
+            cambioUsuario.setId_usuario(1);
+            cambioUsuario.setUsername("juan.perez.1");
+            cambioUsuario.setPassword("123");
+            usuarioJdbc.update(cambioUsuario);
+
+            Usuario nuevoUsuario = new Usuario();
+            nuevoUsuario.setUsername("carlos.ramirez");
+            nuevoUsuario.setPassword("12311111111111111111111111111111111111111111111111");
+            //nuevoUsuario.setPassword("123");
+            usuarioJdbc.insert(nuevoUsuario);
+
+            conexion.commit();
+            System.out.println("Se ha hecho commit de la transaccion");
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+            System.out.println("Entramos al rollback");
+            try {
+                conexion.rollback();
+            } catch (SQLException ex1) {
+                ex1.printStackTrace(System.out);
+            }
         }
-        
-        //Insertamos un nuevo usuario
-//        Usuario usuario = new Usuario("carlos.juarez", "123");
-//        usuarioJdbc.insert(usuario);
-
-        //Modificamos un usuario existente
-//        Usuario usuario = new Usuario(3, "carlos.juarez","456");
-//        usuarioJdbc.update(usuario);
-
-        usuarioJdbc.delete(new Usuario(3));
     }
 }
