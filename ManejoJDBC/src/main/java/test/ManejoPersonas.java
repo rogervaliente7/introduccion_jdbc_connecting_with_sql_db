@@ -28,7 +28,7 @@ public class ManejoPersonas {
             
             Persona nuevaPersona = new Persona();
             nuevaPersona.setNombre("Carlos");
-            nuevaPersona.setApellido("Ramirez1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+            nuevaPersona.setApellido("Ramirez111111111");
             nuevaPersona.setApellido("Ramirez");
             personaJdbc.insert(nuevaPersona);
             

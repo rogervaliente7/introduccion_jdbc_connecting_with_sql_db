@@ -30,7 +30,7 @@ public class ManejoUsuarios {
 
             Usuario nuevoUsuario = new Usuario();
             nuevoUsuario.setUsername("carlos.ramirez");
-            nuevoUsuario.setPassword("12311111111111111111111111111111111111111111111111");
+            nuevoUsuario.setPassword("1231111111");
             //nuevoUsuario.setPassword("123");
             usuarioJdbc.insert(nuevoUsuario);
 
