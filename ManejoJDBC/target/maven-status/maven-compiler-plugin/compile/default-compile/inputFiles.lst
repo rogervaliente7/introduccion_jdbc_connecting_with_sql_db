@@ -1,7 +1,9 @@
-/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/domain/Usuario.java
-/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/domain/Persona.java
+/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/datos/PersonaDao.java
+/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/domain/PersonaDTO.java
 /home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/test/ManejoUsuarios.java
-/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/datos/PersonaJDBC.java
+/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/domain/UsuarioDTO.java
 /home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/test/ManejoPersonas.java
-/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/datos/UsuarioJDBC.java
+/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/datos/PersonaDaoJDBC.java
+/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/datos/UsuarioDaoJDBC.java
+/home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/datos/UsuarioDao.java
 /home/roger/projects/javaProjects/introduccion_jdbc_connecting_with_sql_db/ManejoJDBC/src/main/java/datos/Conexion.java

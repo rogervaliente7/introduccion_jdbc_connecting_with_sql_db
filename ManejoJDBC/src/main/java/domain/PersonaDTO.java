@@ -1,6 +1,6 @@
 package domain;
 
-public class Persona {
+public class PersonaDTO {
     
     private int id_persona;
     private String nombre;

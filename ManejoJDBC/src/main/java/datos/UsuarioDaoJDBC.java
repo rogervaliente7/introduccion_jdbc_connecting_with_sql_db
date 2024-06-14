@@ -1,11 +1,11 @@
 package datos;
 
-import domain.Usuario;
+import domain.UsuarioDTO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioJDBC {
+public class UsuarioDaoJDBC implements UsuarioDao{
 
     private Connection conexionTransaccional;
 
@@ -14,20 +14,20 @@ public class UsuarioJDBC {
     private static final String SQL_UPDATE = "UPDATE usuario SET username=?, password=? WHERE id_usuario = ?";
     private static final String SQL_DELETE = "DELETE FROM usuario WHERE id_usuario=?";
 
-    public UsuarioJDBC() {
+    public UsuarioDaoJDBC() {
 
     }
 
-    public UsuarioJDBC(Connection conexionTransaccional) {
+    public UsuarioDaoJDBC(Connection conexionTransaccional) {
         this.conexionTransaccional = conexionTransaccional;
     }
 
-    public List<Usuario> select() throws SQLException {
+    public List<UsuarioDTO> select() throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Usuario usuario = null;
-        List<Usuario> usuarios = new ArrayList<Usuario>();
+        UsuarioDTO usuario = null;
+        List<UsuarioDTO> usuarios = new ArrayList<UsuarioDTO>();
         try {
             conn = this.conexionTransaccional != null ? this.conexionTransaccional : Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
@@ -37,7 +37,7 @@ public class UsuarioJDBC {
                 String username = rs.getString("username");
                 String password = rs.getString("password");
 
-                usuario = new Usuario();
+                usuario = new UsuarioDTO();
                 usuario.setId_usuario(id_usuario);
                 usuario.setUsername(username);
                 usuario.setPassword(password);
@@ -55,7 +55,7 @@ public class UsuarioJDBC {
         return usuarios;
     }
 
-    public int insert(Usuario usuario) throws SQLException {
+    public int insert(UsuarioDTO usuario) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -78,7 +78,7 @@ public class UsuarioJDBC {
         return rows;
     }
 
-    public int update(Usuario usuario) throws SQLException {
+    public int update(UsuarioDTO usuario) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -102,7 +102,7 @@ public class UsuarioJDBC {
         return rows;
     }
 
-    public int delete(Usuario usuario) throws SQLException {
+    public int delete(UsuarioDTO usuario) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;

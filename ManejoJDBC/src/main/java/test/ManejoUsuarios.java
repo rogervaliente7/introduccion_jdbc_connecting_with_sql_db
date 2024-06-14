@@ -1,10 +1,11 @@
 package test;
 
 import datos.Conexion;
-import datos.UsuarioJDBC;
-import datos.UsuarioJDBC;
-import domain.Usuario;
-import domain.Usuario;
+import datos.UsuarioDao;
+import datos.UsuarioDaoJDBC;
+import datos.UsuarioDaoJDBC;
+import domain.UsuarioDTO;
+import domain.UsuarioDTO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,19 +21,13 @@ public class ManejoUsuarios {
                 conexion.setAutoCommit(false);
             }
 
-            UsuarioJDBC usuarioJdbc = new UsuarioJDBC(conexion);
+            UsuarioDao usuarioDao = new UsuarioDaoJDBC(conexion);
 
-            Usuario cambioUsuario = new Usuario();
-            cambioUsuario.setId_usuario(1);
-            cambioUsuario.setUsername("juan.perez.1");
-            cambioUsuario.setPassword("123");
-            usuarioJdbc.update(cambioUsuario);
+            List<UsuarioDTO> usuarios = usuarioDao.select();
 
-            Usuario nuevoUsuario = new Usuario();
-            nuevoUsuario.setUsername("carlos.ramirez");
-            nuevoUsuario.setPassword("1231111111");
-            //nuevoUsuario.setPassword("123");
-            usuarioJdbc.insert(nuevoUsuario);
+            for (UsuarioDTO usuario : usuarios) {
+                System.out.println("Usuario DTO:" + usuario);
+            }
 
             conexion.commit();
             System.out.println("Se ha hecho commit de la transaccion");
@@ -45,5 +40,6 @@ public class ManejoUsuarios {
                 ex1.printStackTrace(System.out);
             }
         }
+
     }
 }
